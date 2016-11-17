@@ -1,0 +1,25 @@
+
+Our team is collecting data on a variety of topics, specifically on the scale of 'county.' 
+
+I plan on using data from the American Community Survey, tables DP02, DP03, S1501, and G001 most recent 5 year survey available.
+
+My target will be whether the median income of the county is high-income, middle-income, or low-income.  Features I intend to use include the following:
+	Demographics - age, racial composition
+	Migrant status - native, immigrant, citizenship status
+	Moved recently?
+	Household size & composition
+	Industry distribution
+	Gini coefficient within the county
+	Number of accredited post-secondary schools
+	Population density
+	Health insurance penetration
+	Possibly others tbd
+
+I plan to try as many of the classification algorithms as I can..  :)
+
+
+
+
+
+
+
