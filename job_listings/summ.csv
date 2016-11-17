@@ -1,0 +1,42 @@
+id,value
+listing,
+listing.data+analyst,
+listing.data+analyst.Boston MA,1000
+listing.data+analyst.Chicago IL,1000
+listing.data+analyst.New York NY,1000
+listing.data+analyst.San Francisco CA,1000
+listing.data+analyst.San Jose CA,973
+listing.data+analyst.Seattle WA,987
+listing.data+analyst.Washington DC,1000
+listing.data+architect,
+listing.data+architect.Boston MA,678
+listing.data+architect.Chicago IL,792
+listing.data+architect.New York NY,1000
+listing.data+architect.San Francisco CA,850
+listing.data+architect.San Jose CA,580
+listing.data+architect.Seattle WA,874
+listing.data+architect.Washington DC,829
+listing.data+engineer,
+listing.data+engineer.Boston MA,1000
+listing.data+engineer.Chicago IL,1000
+listing.data+engineer.New York NY,1000
+listing.data+engineer.San Francisco CA,1000
+listing.data+engineer.San Jose CA,1000
+listing.data+engineer.Seattle WA,1000
+listing.data+engineer.Washington DC,1000
+listing.data+scientist,
+listing.data+scientist.Boston MA,740
+listing.data+scientist.Chicago IL,565
+listing.data+scientist.New York NY,1000
+listing.data+scientist.San Francisco CA,816
+listing.data+scientist.San Jose CA,136
+listing.data+scientist.Seattle WA,715
+listing.data+scientist.Washington DC,208
+listing.statistician,
+listing.statistician.Boston MA,571
+listing.statistician.Chicago IL,376
+listing.statistician.New York NY,240
+listing.statistician.San Francisco CA,582
+listing.statistician.San Jose CA,240
+listing.statistician.Seattle WA,354
+listing.statistician.Washington DC,610
