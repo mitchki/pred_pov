@@ -1,0 +1,88 @@
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="d3-tip.js"></script>
+		<link rel="stylesheet" type="text/css" href="njstyle.css">
+
+
+			
+		<body>
+			<h2 id="titl">Housing Units: </h2>
+
+			<p>Results displayed in the map below. </p>
+			<svg width="550" height="750" ></svg>
+				<script>
+
+					var title = "Percent three room housing units ";
+					document.getElementById('titl').innerHTML = "Housing units: " + title;
+
+
+
+					var svg = d3.select("svg"),
+					    width = +svg.attr("width"),
+					    height = +svg.attr("height");
+
+					var rateById = d3.map();
+					var govById = d3.map();
+					var nameById = d3.map();
+
+
+					var projection = d3.geoAlbers()
+					    .scale(15000)
+					    .rotate([74.6, 0])
+					    .center([ 0, 40])
+					    .translate([width / 2, height / 2]);
+
+					var path = d3.geoPath()
+					    .projection(projection);
+
+					var tip = d3.tip()
+					  .attr('class', 'd3-tip')
+					  .offset([-10, 0])
+					  .html(function(d) { return nameById.get(d.id) + "</br>" + title + rateById.get(d.id) + " %";  })    
+
+					d3.queue()
+					    .defer(d3.json, "munis.json")
+					    .defer(d3.tsv, "p_hu_3room.tsv", function(d) { 
+					      rateById.set(d.id, +d.cluster);
+					      nameById.set(d.id, d.name);
+					    })
+					    .await(ready);
+
+
+					//console.log(nameById);
+
+					function ready(error, us) {
+					  if (error) throw error;
+
+				 	var maxrate = Math.max.apply(null, rateById.values());
+				 	var minrate = Math.min.apply(null, rateById.values());
+
+				 	//console.log(maxrate);
+
+
+					var quantize = d3.scaleQuantize()
+//					    .domain([0, 30])
+					    .domain([minrate, maxrate])
+					    .range(d3.range(9).map(function(i) { return "blue" + i + "-9"; }));
+
+
+					  svg.append("g")
+					      .attr("class", "counties")
+					    .selectAll("path")
+					      .data(topojson.feature(us, us.objects.nj_munis_2).features)
+					    .enter().append("path")
+					      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
+					      .attr("d", path)
+					      .on('mouseover', tip.show)
+					      .on('mouseout', tip.hide)
+					;
+
+					  svg.call(tip);    
+					}
+
+					</script>
+					<div id="comments" class="innertube">
+					<p>Mouse over to identify individual towns</p>
+
+				</body>	
+				

@@ -1,0 +1,81 @@
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="d3-tip.js"></script>
+		<link rel="stylesheet" type="text/css" href="njstyle.css">
+
+
+			
+		<body>
+			<h2>Job listings per 1000 in labor force: Teachers</h2>
+
+			<p>Results displayed in the map below. Mouse over to identify individual towns.</p>
+			<svg width="550" height="750" ></svg>
+				<script>
+					var svg = d3.select("svg"),
+					    width = +svg.attr("width"),
+					    height = +svg.attr("height");
+
+					var rateById = d3.map();
+					var govById = d3.map();
+					var nameById = d3.map();
+
+					//var colorScale = d3.scale.category20c();
+
+					var quantize = d3.scaleQuantize()
+					    .domain([0, 1])
+					    .range(d3.range(9).map(function(i) { return "purple" + i + "-9"; }));
+
+					var projection = d3.geoAlbers()
+					    .scale(15000)
+					    .rotate([74.6, 0])
+					    .center([ 0, 40])
+					    .translate([width / 2, height / 2]);
+
+					var path = d3.geoPath()
+					    .projection(projection);
+
+					var tip = d3.tip()
+					  .attr('class', 'd3-tip')
+					  .offset([-10, 0])
+					  .html(function(d) { return nameById.get(d.id) + "<br/>Job listings per 1000 in labor force " + rateById.get(d.id);  })    
+
+
+					d3.queue()
+					    .defer(d3.json, "munis.json")
+					    .defer(d3.tsv, "teacher_rate.tsv", function(d) { 
+					      rateById.set(d.id, +d.cluster);
+					      nameById.set(d.id, d.name);
+					    })
+					    .await(ready);
+
+
+					//console.log(nameById);
+
+					function ready(error, us) {
+					  if (error) throw error;
+
+					  svg.append("g")
+					      .attr("class", "counties")
+					    .selectAll("path")
+					      .data(topojson.feature(us, us.objects.nj_munis_2).features)
+					    .enter().append("path")
+					      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
+					      .attr("d", path)
+					      .on('mouseover', tip.show)
+					      .on('mouseout', tip.hide)
+					;
+
+					  svg.call(tip);    
+					}
+
+					</script>
+					<div style='float:left'><p>Job listings per 1000 in labor force<br/>
+					 <span id=indeed_at><a href="http://www.indeed.com/" target="_blank">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"  target="_blank"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0;
+                vertical-align: middle;" alt="Indeed job search"></a></span>
+</div>
+
+					<div id="comments" class="innertube">
+					<p></p> </div>
+
+				</body>	
+				

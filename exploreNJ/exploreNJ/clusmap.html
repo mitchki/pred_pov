@@ -1,0 +1,99 @@
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="d3-tip.js"></script>
+		<link rel="stylesheet" type="text/css" href="njstyle.css">
+
+
+			
+		<body>
+			<h1>New Jersey Population Clusters</h1>
+			<!--
+			<p> <span style='color:red'><b>This website is under development. Please email me <a href='mailto:kim@who-knows.com'>kim@who-knows.com</a> to request notification of completion!</b></span></p>
+			-->
+			<p>Market segmentation analysis performed by unsupervised machine learning. Results displayed in the map below. </p>
+			<svg width="450" height="750" ></svg>
+				<script>
+					var svg = d3.select("svg"),
+					    width = +svg.attr("width"),
+					    height = +svg.attr("height");
+
+					var rateById = d3.map();
+					var govById = d3.map();
+					var nameById = d3.map();
+
+					//var colorScale = d3.scale.category20c();
+
+					var quantize = d3.scaleQuantize()
+					    .domain([0, 9])
+					    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+
+					var projection = d3.geoAlbers()
+					    .scale(15000)
+					    .rotate([74.6, 0])
+					    .center([ 0, 40])
+					    .translate([width / 2, height / 2]);
+
+					var path = d3.geoPath()
+					    .projection(projection);
+
+					var tip = d3.tip()
+					  .attr('class', 'd3-tip')
+					  .offset([-10, 0])
+					  .html(function(d) { return nameById.get(d.id) + "<br>Assigned cluster: " + rateById.get(d.id) ;  })    
+
+					d3.queue()
+					    .defer(d3.json, "munis.json")
+					    .defer(d3.tsv, "PCAclus.tsv", function(d) { 
+					      rateById.set(d.id, +d.cluster);
+					      nameById.set(d.id, d.name);
+					    })
+					    .await(ready);
+
+
+					//console.log(nameById);
+
+					function ready(error, us) {
+					  if (error) throw error;
+
+					  svg.append("g")
+					      .attr("class", "counties")
+					    .selectAll("path")
+					      .data(topojson.feature(us, us.objects.nj_munis_2).features)
+					    .enter().append("path")
+					      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
+					      .attr("d", path)
+					      .on('mouseover', tip.show)
+					      .on('mouseout', tip.hide)
+					;
+
+					  svg.call(tip);    
+					}
+
+					</script>
+					<div id="comments" class="innertube">
+					<p>Mouse over to identify individual towns</p>
+						<div class="foo c0-9"></div>
+						<p><b>Cluster 0</b> (137 municipalities)
+						<br/> Upper middle: more homes over $200K, more likely to work in management, more likely college educated.</p>
+						<div class="foo c1-9"></div>
+						<p><b>Cluster 1</b> (94 municipalities)
+						<br/> Cosmopolitan: More young people (25 to 34), more likely to rent, more latino people.</p>
+						<div class="foo c2-9"></div>
+						<p><b>Cluster 2</b> (176 municipalities)
+						<br/> Traditional suburbs: More white people in owner-occupied detached homes.
+						<div class="foo c3-9"></div>
+						<p><b>Cluster 3</b> (10 municipalities)
+						<br/> Wealthiest: Higher % homes over $1MM and more than 8 rooms. Fewer % women in labor force.</p>
+						<div class="foo c4-9"></div>
+						<p><b>Cluster 4</b> (81 municipalities)
+						<br/> New working class: Young (25-34), more likely employed in service occupation. High % single Mom's, high % women in labor force.</p>
+						<div class="foo c5-9"></div>
+						<p><b>Cluster 5</b> (34 municipalities)
+						<br/> Cities: Higher % homes with no cars. Higher % single mothers and % poverty.</p>
+						<div class="foo c6-9"></div>
+						<p><b>Cluster 6</b> (33 municipalities)
+						<br/> Older Communities: more people over 55 and retired, higher proportion of veterans, 5-6 room homes.</p>
+
+					</div>
+				</body>	
+				

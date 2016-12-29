@@ -1,0 +1,206 @@
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			height: 100%; 
+			max-height: 100%; 
+			font-family:Sans-serif;
+			line-height: 1.5em;
+		}
+
+		div#one {
+    		width: 230px;
+    		height: 100px;
+    		float: left;
+		}
+
+		div#two {
+    		margin-left: 15%;
+    		height: 100px;
+		}	
+		
+		#header {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 120px; 
+			overflow: hidden; /* Disables scrollbars on the header frame. To enable scrollbars, change "hidden" to "scroll" */
+			background: #4C996B;
+		}
+		
+		#nav {
+			position: absolute; 
+			top: 100px; 
+			left: 0; 
+			bottom: 0;
+			width: 230px;
+			overflow: auto; /* Scrollbars will appear on this frame only when there's enough content to require scrolling. To disable scrollbars, change to "hidden", or use "scroll" to enable permanent scrollbars */
+			background: #7AB793; 		
+		}
+		
+		#logo {
+			padding:5px;
+
+		}
+		
+		main {
+			position: fixed;
+			top: 100px; /* Set this to the height of the header */
+			left: 230px; 
+			right: 0;
+			bottom: 0;
+			overflow: auto; 
+			background: #fff;
+		}
+		
+		.innertube {
+			margin: 15px; /* Provides padding for the content */
+		}
+		
+		p {
+			color: #555;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		nav ul a {
+			color: darkgreen;
+			text-decoration: none;
+		}
+		svg {
+			float:left;
+		}
+
+
+
+		.counties {
+		  fill: none;
+		  stroke: teal;
+		}
+
+
+		.foo {
+		  float: left;
+		  width: 20px;
+		  height: 20px;
+		  margin: 5px;
+		  border: 1px solid rgba(0, 0, 0, .2);
+		}
+
+		.c0-9 { background:rgb(255,255,179); }   
+		.c1-9 { background:rgb(253,180,98); }    
+		.c2-9 { background:rgb(141,211,199); }   
+		.c3-9 { background:rgb(190,146,218); }  
+		.c4-9 { background:rgb(128,177,211); }
+		.c5-9 { background:rgb(251,128,114); }  
+		.c6-9 { background:rgb(252,205,229); }  
+		.c7-9 { background:rgb(179,222,105); }
+		.c8-9 { background:rgb(217,217,217); }
+
+
+
+		.q0-9 { fill:rgb(255,255,179); }   
+		.q1-9 { fill:rgb(253,180,98); }    
+		.q2-9 { fill:rgb(141,211,199); }   
+		.q3-9 { fill:rgb(190,146,218); }  
+		.q4-9 { fill:rgb(128,177,211); }
+		.q5-9 { fill:rgb(251,128,114); }  
+		.q6-9 { fill:rgb(252,205,229); }  
+		.q7-9 { fill:rgb(179,222,105); }
+		.q8-9 { fill:rgb(217,217,217); }
+
+
+
+		.red0-9 { fill:rgb(237,187,153); }   
+		.red1-9 { fill:rgb(232,168,124); }    
+		.red2-9 { fill:rgb(227,149,95); }   
+		.red3-9 { fill:rgb(222,130,66); }  
+		.red4-9 { fill:rgb(216,111,38); }
+		.red5-9 { fill:rgb(187,96,33); }  
+		.red6-9 { fill:rgb(158,81,28); }  
+		.red7-9 { fill:rgb(129,66,23); }
+		.red8-9 { fill:rgb(100,51,18); }
+
+		.purple0-9 { fill:rgb(240,200,255); }   
+		.purple1-9 { fill:rgb(190,109,229); }   
+		.purple2-9 { fill:rgb(177,80,224); }    
+		.purple3-9 { fill:rgb(164,51,219); }   
+		.purple4-9 { fill:rgb(147,36,200); }  
+		.purple5-9 { fill:rgb(125,31,171); }
+		.purple6-9 { fill:rgb(104,25,142); }  
+		.purple7-9 { fill:rgb(83,20,114); }  
+/*		.purple8-9 { fill:rgb(62,15,85); }  */
+		.purple8-9 { fill:rgb(41,10,56); }
+
+		.blue0-9 { fill:rgb(247,251,255); }
+		.blue1-9 { fill:rgb(222,235,247); }
+		.blue2-9 { fill:rgb(198,219,239); }
+		.blue3-9 { fill:rgb(158,202,225); }
+		.blue4-9 { fill:rgb(107,174,214); }
+		.blue5-9 { fill:rgb(66,146,198); }
+		.blue6-9 { fill:rgb(33,113,181); }
+		.blue7-9 { fill:rgb(8,81,156); }
+		.blue8-9 { fill:rgb(8,48,107); }
+
+
+/* 122, 183, 147 */
+		.green0-9 { fill:rgb(100,229,200); }
+		.green1-9 { fill:rgb(90,224,180); }
+		.green2-9 { fill:rgb(80,219,140); }
+		.green3-9 { fill:rgb(67,200,100); }
+		.green4-9 { fill:rgb(60,171,81); }
+		.green5-9 { fill:rgb(50,142,60); }
+		.green6-9 { fill:rgb(40,114,50); }
+		.green7-9 { fill:rgb(28,85,40); }
+		.green8-9 { fill:rgb(20,56,30); }
+
+
+
+
+		.d3-tip {
+		  line-height: 1;
+		  font-weight: bold;
+		  padding: 8px;
+		  font-size: 10pt;
+		  font-family: sans-serif;
+		  background: teal;
+		  color: #fff;
+		  border-radius: 2px;
+		}
+
+		/* Creates a small triangle extender for the tooltip */
+		.d3-tip:after {
+		  box-sizing: border-box;
+		  display: inline;
+		  font-size: 10px;
+		  width: 100%;
+		  line-height: 1;
+		  color: rgba(0, 0, 0, 0.8);
+		  content: "\25BC";
+		  position: absolute;
+		  text-align: center;
+		}
+
+		/* Style northward tooltips differently */
+		.d3-tip.n:after {
+		  margin: -1px 0 0 0;
+		  top: 100%;
+		  left: 0;
+		}
+
+				
+		/*IE6 fix*/
+		* html body{
+			padding: 100px 0 0 230px; /* Set the first value to the height of the header and last value to the width of the nav */
+		}
+		
+		* html main{ 
+			height: 100%; 
+			width: 100%; 
+		}
+		

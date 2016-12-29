@@ -1,0 +1,112 @@
+ <!DOCTYPE html>
+<!-- Template by html.am -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Data Seedlings in the Garden State</title>
+		<link rel="stylesheet" type="text/css" href="njstyle.css">
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="d3-tip.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	</head>
+	
+	<body>		
+		<header id="header">
+			<div id="logo">
+			    <div id="one"><img src="newJerseySign.jpg" height="120"></div>
+    			<div id="two"><h1>Data Seedlings in the Garden State</h1>
+    				Kimberley Mitchell - <a href='mailto:kim@who-knows.com'>kim@who-knows.com</a> 
+    			</div>
+    			
+			</div>
+		</header>
+				
+		<main>
+			<div class="innertube">
+				<iframe id='ifr' src='clusmap.html' frameborder="0" scrolling="no" width="840" height="960"> </iframe>
+			</div>
+		</main>
+
+		<nav id="nav">
+			<div class="innertube">
+				<h1>Input variable maps</h1>
+
+				<h3>Demographics</h3>
+			    <form name="jump" class="center">
+			        <select name="menu" id="selection" onChange='document.getElementById("ifr").src=this.value;'>
+			            <option value="clusmap.html">Select an option</option>
+			            <option value="p_ageless5.html">Age less than 5</option>
+			            <option value="p_age5to9.html">Age 5 to 9</option>
+			            <option value="p_age10to14.html">Age 10 to 14</option>
+			            <option value="p_age15to19.html">Age 15 to 19</option>
+			            <option value="p_age20to24.html">Age 20 to 24</option>
+			            <option value="p_age25to34.html">Age 25 to 34</option>
+			            <option value="p_age35to44.html">Age 35 to 44</option>
+			            <option value="p_age45to54.html">Age 45 to 54</option>
+			            <option value="p_age55to59.html">Age 55 to 59</option>
+			            <option value="p_age60to64.html">Age 60 to 64</option>
+			            <option value="p_age65to74.html">Age 65 to 74</option>
+			            <option value="p_age75to84.html">Age 75 to 84</option>
+			            <option value="p_ageover85.html">Age over 85</option>
+
+			        </select>
+			    </form> 
+
+
+				<h3>Industries / Econ</h3>
+				<form name="jump2" class="center">
+
+				<select id="selectbox" name="jump2" onChange='document.getElementById("ifr").src=this.value;'>
+						<option value="clusmap.html">Select an option</option>
+			            <option value="p_occ_bus.html">Occupation: Management</option>
+			            <option value="p_occ_trans.html">Occupation: Transportation</option>
+			            <option value="p_occ_serv.html">Occupation: Services</option>
+			            <option value="p_occ_sales.html">Occupation: Sales</option>
+			            <option value="p_occ_const.html">Occupation: Construction</option>
+
+				</select>
+				</form>
+
+
+
+				<h3>Housing</h3>
+			    <form name="jump3" class="center">
+			        <select name="menu3" id="selection3" onChange='document.getElementById("ifr").src=this.value;'>
+			            <option value="clusmap.html">Select an option</option>
+			            <option value="p_1hu_bldg_det.html">% single fam det</option>
+			            <option value="p_1hu_bldg_att.html">% single fam att</option>
+			            <option value="p_20hu_bldg.html">% 20 unit bldg</option>
+			            <option value="p_hu_mobile.html">% mobile homes</option>
+			            <option value="p_hu_gt_2010.html">% newer than 2010</option>
+			            <option value="p_hu_lt_1939.html">% older than 1939</option>
+			            <option value="p_hu_1room.html">% 1 room unit</option>
+			            <option value="p_hu_2room.html">% 2 room unit</option>
+			            <option value="p_hu_3room.html">% 3 room unit</option>
+			            <option value="p_hu_4room.html">% 4 room unit</option>
+			            <option value="p_hu_5room.html">% 5 room unit</option>
+			            <option value="p_hu_6room.html">% 6 room unit</option>
+			            <option value="p_hu_7room.html">% 7 room unit</option>
+			            <option value="p_hu_8room.html">% 8 room unit</option>
+			            <option value="p_hu_gt8room.html">% > than 8 rooms</option>
+			        </select>
+			    </form>
+
+				<h3>Miscellaneous</h3>
+			    <form name="jump4" class="center">
+			        <select name="menu4" id="selection4" onChange='document.getElementById("ifr").src=this.value;'>
+			            <option value="clusmap.html">Select an option</option>
+			            <option value="developer_rate.html">Job listings: developer</option>
+			            <option value="management_rate.html">Job listings: management</option>
+			            <option value="teacher_rate.html">Job listings: teacher</option>
+			            <option value="num_train_stat.html"># train stations</option>
+			            <option value="num_badge.html">Sustainability</option>
+			        </select>
+			    </form>
+
+			</div>
+		</nav>	
+	</body>
+</html>
